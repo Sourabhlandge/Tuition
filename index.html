@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tuition Classes - Dhanshree Linge</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Pacifico&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #ff6f61;
+            --secondary: #5f4bb6;
+            --accent: #f9c846;
+            --text: #22223b;
+            --background: #f7f7ff;
+            --highlight: #43aa8b;
+            --white: #fff;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--background) 60%, var(--accent) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            transition: background 0.7s;
+        }
+
+        header {
+            background: linear-gradient(90deg, var(--primary) 60%, var(--secondary) 100%);
+            color: var(--white);
+            padding: 50px 20px 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 24px rgba(95,75,182,0.12);
+            transition: background 0.7s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header h1 {
+            font-family: 'Pacifico', cursive;
+            font-size: 38px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.08);
+            animation: fadeInDown 1.2s;
+        }
+
+        header p {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            animation: fadeInUp 1.2s;
+        }
+
+        .header-quote {
+            font-family: 'Pacifico', cursive;
+            font-size: 24px;
+            color: var(--accent);
+            margin-top: 18px;
+            animation: fadeIn 2s;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.06);
+        }
+
+        nav {
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(67,170,139,0.08);
+            transition: background 0.7s;
+        }
+
+        nav a {
+            color: var(--white);
+            padding: 15px 28px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            border-radius: 30px;
+            margin: 0 8px;
+        }
+
+        nav a:hover {
+            background: var(--primary);
+            color: var(--accent);
+            box-shadow: 0 2px 12px rgba(255,111,97,0.12);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 50px 20px 30px 20px;
+            animation: fadeIn 1.2s;
+        }
+
+        .cta {
+            background: linear-gradient(90deg, var(--highlight), var(--accent));
+            color: var(--text);
+            padding: 22px;
+            margin-top: 28px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 14px;
+            font-size: 22px;
+            box-shadow: 0 2px 16px rgba(67,170,139,0.10);
+            transition: background 0.7s;
+            animation: pulse 2s infinite;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: 30px auto 0 auto;
+            overflow: hidden;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(95,75,182,0.10);
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 1s cubic-bezier(.77,0,.18,1);
+            will-change: transform;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            transition: opacity 0.7s;
+            position: relative;
+        }
+        .carousel-slide img {
+            width: 100%;
+            display: block;
+            border-radius: 18px;
+            height: 320px;
+            object-fit: cover;
+            filter: brightness(0.96) contrast(1.08);
+            transition: filter 0.7s;
+        }
+        .carousel-caption {
+            position: absolute;
+            bottom: 18px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--white);
+            font-size: 20px;
+            background: rgba(67,170,139,0.55);
+            padding: 10px 0;
+            font-family: 'Pacifico', cursive;
+            letter-spacing: 1px;
+            border-radius: 0 0 18px 18px;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.18);
+        }
+
+        .card {
+            background: linear-gradient(120deg, var(--white) 80%, var(--accent) 100%);
+            border-radius: 14px;
+            box-shadow: 0 2px 16px rgba(95,75,182,0.08);
+            padding: 28px;
+            margin: 28px 0;
+            transition: transform 0.4s, box-shadow 0.4s;
+            animation: fadeInUp 1.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(255,111,97,0.12);
+        }
+
+        ul li {
+            padding: 10px 0;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        ul li:hover {
+            color: var(--primary);
+        }
+
+        .contact-form input, .contact-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 18px;
+            border: 1.5px solid var(--accent);
+            border-radius: 7px;
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            transition: border 0.3s, box-shadow 0.3s;
+            box-shadow: 0 1px 4px rgba(249,200,70,0.06);
+        }
+
+        .contact-form input:focus, .contact-form textarea:focus {
+            border: 2px solid var(--primary);
+            outline: none;
+            box-shadow: 0 2px 12px rgba(255,111,97,0.10);
+        }
+
+        .contact-form button {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 14px 28px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+            letter-spacing: 1px;
+            transition: background 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(255,111,97,0.10);
+        }
+
+        .contact-form button:hover {
+            background: linear-gradient(90deg, var(--secondary), var(--primary));
+            box-shadow: 0 4px 16px rgba(95,75,182,0.12);
+        }
+
+        footer {
+            background: linear-gradient(90deg, var(--text), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            padding: 36px 10px 24px 10px;
+            margin-top: 50px;
+            font-size: 17px;
+            letter-spacing: 1px;
+            box-shadow: 0 -2px 16px rgba(95,75,182,0.10);
+            transition: background 0.7s;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @keyframes fadeIn {
+            from { opacity: 0;}
+            to { opacity: 1;}
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(67,170,139,0.15);}
+            70% { box-shadow: 0 0 0 16px rgba(67,170,139,0);}
+            100% { box-shadow: 0 0 0 0 rgba(67,170,139,0);}
+        }
+
+        /* Responsive */
+        @media (max-width: 800px) {
+            .carousel-slide img { height: 180px; }
+            .container { padding: 30px 8px 20px 8px; }
+            .card { padding: 18px; }
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 24px; }
+            .header-quote { font-size: 16px; }
+            nav a { font-size: 15px; padding: 10px 10px; }
+            .carousel-slide img { height: 120px; }
+            .cta { font-size: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header data-aos="fade-down">
+        <h1>Building Bright Futures – Tuition for Nursery to 5th Grade</h1>
+        <p>Helping Your Child Excel in Every Subject</p>
+        <div class="header-quote">
+            "Every child is a different kind of flower, and all together, make this world a beautiful garden."
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About Us</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Home Section -->
+    <div class="container" id="home" data-aos="fade-up">
+        <h2 style="font-family:'Pacifico',cursive;color:var(--primary);font-size:2rem;text-align:center;margin-bottom:10px;">
+            Welcome to Our Tuition Classes
+        </h2>
+        <div style="text-align:center;font-size:1.2rem;color:var(--secondary);margin-bottom:18px;">
+            <em>“Empowering Young Minds, One Lesson at a Time.”</em>
+        </div>
+        <!-- Carousel Start -->
+        <div class="carousel" id="carousel">
+            <div class="carousel-track" id="carousel-track">
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=1050&q=80" alt="Child Studying">
+                    <div class="carousel-caption">"Learning Today, Leading Tomorrow"</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1503676382389-4809596d5290?auto=format&fit=crop&w=1050&q=80" alt="Kids Reading">
+                    <div class="carousel-caption">"Where Curiosity Meets Excellence"</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1050&q=80" alt="Creative Learning">
+                    <div class="carousel-caption">"Nurturing Dreams, Shaping Futures"</div>
+                </div>
+                <div class="carousel-slide">
+                    <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&w=1050&q=80" alt="Happy Students">
+                    <div class="carousel-caption">"Every Child Can Shine"</div>
+                </div>
+            </div>
+        </div>
+        <!-- Carousel End -->
+        <div class="cta">📚 Enroll Now & Give Your Child the Best Start!</div>
+    </div>
+
+    <!-- About Section -->
+    <div class="container" id="about" data-aos="fade-right">
+        <div class="card">
+            <h2 style="color:var(--secondary);font-family:'Montserrat',sans-serif;">Why Choose Us?</h2>
+            <p>Led by <strong style="color:var(--primary);font-family:'Pacifico',cursive;">Dhanshree Linge</strong>, our center is focused on creating a joyful, engaging learning experience. With a track record of happy parents and performing students, we focus on:</p>
+            <ul>
+                <li>✔️ Individual Attention</li>
+                <li>✔️ Fun & Friendly Environment</li>
+                <li>✔️ Mock Tests & Feedback</li>
+                <li>✔️ Handwriting Excellence</li>
+            </ul>
+            <div style="margin-top:18px;font-family:'Pacifico',cursive;color:var(--highlight);font-size:1.2rem;text-align:right;">
+                "Inspiring Confidence, Igniting Passion for Learning"
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="container" id="services" data-aos="zoom-in">
+        <div class="card">
+            <h2 style="color:var(--primary);font-family:'Montserrat',sans-serif;">Our Classes and Offerings</h2>
+            <ul>
+                <li>📘 All Subjects (Nursery – 5th Grade)</li>
+                <li>📝 Exam Preparation</li>
+                <li>🧠 Mock Tests</li>
+                <li>✍️ Handwriting Improvement</li>
+                <li>✒️ Cursive Writing Classes</li>
+            </ul>
+            <div style="margin-top:18px;font-family:'Pacifico',cursive;color:var(--secondary);font-size:1.1rem;text-align:left;">
+                "Unlocking Potential, One Student at a Time"
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="container" id="contact" data-aos="fade-left">
+        <div class="card">
+            <h2 style="color:var(--highlight);font-family:'Montserrat',sans-serif;">Get in Touch</h2>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required />
+                <input type="email" placeholder="Your Email" required />
+                <input type="tel" placeholder="Your Phone Number" required />
+                <textarea rows="4" placeholder="Your Message..."></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+            <p><strong>📞 Call:</strong> <span style="color:var(--primary);font-weight:bold;">+91 99753 78969</span></p>
+            <p><strong>📍 Location:</strong> <span style="color:var(--secondary);font-weight:bold;">Vasant Wadi, Dombivli East</span></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer data-aos="zoom-in-up">
+        <p>© 2025 Tuition by Dhanshree Linge | All Rights Reserved</p>
+        <p>📞 +91 99753 78969 | 📍 Dombivli East | 📷 Follow us on Instagram</p>
+        <div style="font-family:'Pacifico',cursive;color:var(--accent);margin-top:10px;">
+            "Together, We Build Brighter Tomorrows"
+        </div>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Carousel JS
+        const track = document.getElementById('carousel-track');
+        const slides = Array.from(track.children);
+        let index = 0;
+        let interval = null;
+
+        function moveToSlide(idx) {
+            track.style.transform = `translateX(-${idx * 100}%)`;
+        }
+
+        function nextSlide() {
+            index = (index + 1) % slides.length;
+            moveToSlide(index);
+        }
+
+        function startCarousel() {
+            interval = setInterval(nextSlide, 3500);
+        }
+
+        function stopCarousel() {
+            clearInterval(interval);
+        }
+
+        // Pause on hover
+        const carousel = document.getElementById('carousel');
+        carousel.addEventListener('mouseenter', stopCarousel);
+        carousel.addEventListener('mouseleave', startCarousel);
+
+        // Start carousel
+        startCarousel();
+    </script>
+</body>
+</html>
